@@ -45,4 +45,4 @@ Accelerate uses linking rules to connect each tool. In this scenario for github 
 ## Reports.
 
 
-by Daniel Barrera
+by Daniel Barrera | HCL Accelerate
