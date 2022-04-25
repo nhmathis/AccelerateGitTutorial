@@ -3,7 +3,7 @@
 2. [What is Value Stream Management](#why-value-stream-management)
 3. [Git Hub](#github-set-up)
 4. [Integration ](#integration-set-up)
-5. [Reports](#reports)
+5. [VSM JSON](#VSM JSON)
 
 
 
@@ -94,12 +94,95 @@ This will bring up the default VSM look which we will modify in the following se
 ## VSM JSON
 
 The vsm json file is the rule book for accelerate, in this file you assing all the different stages, linking rules, and integrations.
-The format is the following: 
+When edited correctly your VSM dashboard its updated and the right taks will appear and be tracked trhoughtout your pocess.
 
-## Linking rules.
-Accelerate uses linking rules to connect each tool. In this scenario for github we will used them to link the issues and pull requests. We only have one link rule in this tutorial, since we are connecting issues and pr within github.
+The JSON file has the following tree strucutre:
+* VSM
+  * phase
+      * stage
+  * leadTime
+  * cyleTime
+  * mappings
+  * integrations
+  * linkRules
+  * metrics
+  * metricsBar
 
 
+### Phases and Stages
+
+Each phase has the following strcutre:
+```json
+"phases": [
+    {
+      "name": "Name of the first phase",
+      "description": "What does this phase accomplish, planning, develompent?",
+      "stages": [
+        {
+          "name": "Name of the first phase on this stage",
+          "query": "This query will pull information from integration",
+          "description": "what are the tasks on this stage",
+          "targets": [
+            "Name of the follwoing stage"
+          ],
+          "wipLimit": 3,   /*there is a limit of three work in progress items*/
+          "gates": null
+        },
+        {
+          "name": "Queue",
+          "query": "",
+          "description": "",
+          "targets": [
+            "In Progress"
+          ],
+          "wipLimit": null,
+          "gates": null
+        }
+      ]
+    },
+```
+
+## Query Rules and Linking Rules.
+As noted in the previous section, stages have a query patameter. This query pattameter uses DQL fields to search and filter the different tasks from the data provided by your integration. You can find a full list of thise quries [here](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/dots_query/#devops-query-language-dql). An example of the queies used in our vsm are the following:
+
+```json
+        {
+          "name": "Assigned",
+          "query": "issue.owner != \"unknown\" and issue.status = \"Open\"  ",
+          "description": "These issues have been assigned to a team member",
+          "targets": [
+            "In Progress"
+          ],
+          "wipLimit": null,
+          "gates": null
+       }
+        ....
+        {
+          "name": "In Review",
+          "query": "pr.status = open and pr.assignees.count != 0",
+          "description": "These pull request have been submited and are actively beeing looked at by other team memebers",
+          "targets": [
+            "Merged"
+          ],
+          "wipLimit": 5,
+          "gates": null
+        },
+```
+Since pull requests and issues are different items, we need to find a way to link them together and track their process. Accelerate achives this with linking rules. To define a link rule, specify a field in the linked-from tool that you want to associate with a field in the linked-to tool, and a regular expression that defines the matching pattern. 
+
+For github we have the following link rules.
+```json
+"linkRules": [
+    {
+      "fromIntegrationName": "SingleGitIntegration",
+      "toIntegrationName": "SingleGitIntegration",
+      "fromField": "pr.name",
+      "toField": "issue.name",
+      "pattern": "([A-Z]+-[0-9]+)"
+    }
+  ],
+```
+You might recall we previously set up issue templates to adhere to the pattern: "([A-Z]+-[0-9]+)"
 ## Reports.
 
 
