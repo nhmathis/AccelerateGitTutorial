@@ -33,6 +33,12 @@ Accelerate uses pattern matching to identify which issues are related to wich pr
 
 Once you have your api key you can go to integrations an add the following information to github.
 
+Integration Name: This integration name will be used later on the linking rules, lets keep it consistent.
+
+API URL: The current API URL used by github is https://api.github.com
+
+Owner: when you copy the repository this will be your username, the repositories you want to observe, and the branches should stay as is.
+
 ## Reports.
 
 
