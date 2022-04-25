@@ -4,7 +4,7 @@
   "phases": [
     {
       "name": "Planning",
-      "description": "",
+      "description": "These are the currently reported issues for documentation or bugs",
       "stages": [
         {
           "name": "New Issues",
@@ -30,12 +30,12 @@
     },
     {
       "name": "Development",
-      "description": "",
+      "description": "The issues have now entered the development pipeline",
       "stages": [
         {
           "name": "In Progress",
           "query": "pr.status = open and pr.assignees.count = 0",
-          "description": "",
+          "description": "These issues have an active pull request, however there has not been a reviewer or another team member to give a second eye",
           "targets": [
             "In Review"
           ],
@@ -45,7 +45,7 @@
         {
           "name": "In Review",
           "query": "pr.status = open and pr.assignees.count != 0",
-          "description": "",
+          "description": "These pull request have been submited and are actively beeing looked at by other team memebers",
           "targets": [
             "Merged"
           ],
@@ -55,11 +55,11 @@
         {
           "name": "Merged",
           "query": "pr.status=closed and issue.status != \"Closed\" ",
-          "description": "",
+          "description": "These pull requests have been finally merged, ideally they should close the issue, but we might have issues that need other pull request to be closed. Thus, the issue might remain open even when merged.",
           "targets": [
             "Fixed"
           ],
-          "wipLimit": null,
+          "wipLimit": 3,
           "gates": null
         }
       ]
@@ -108,7 +108,7 @@
   },
   "integrations": [
     {
-      "ADD YOUR INTEGRATION NAME HERE, IT SHOULD MATCH THE ONE IN THE FROM AND TO INTEGRATION NAME UNDER LINK RULES"
+      "NAME OF YOUR INTEGRATION SHOULD BE HERE. IT SHOULD MATCH THE NAME OF THE FROM AND TO INTEGRATION UNDER LINK RULES"
     }
   ],
   "linkRules": [
