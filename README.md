@@ -45,5 +45,9 @@ Accelerate uses linking rules to connect each tool. In this scenario for github 
 
 ## Reports.
 
+## VSM JSON FILE
+
+The vsm json file is the rule book for accelerate, in this file you assing all the different stages, linking rules, and integrations.
+The format is the following: 
 
 by Daniel Barrera | HCL Accelerate
