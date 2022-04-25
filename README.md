@@ -4,7 +4,7 @@
 3. [Git Hub](#github-set-up)
 4. [Integration ](#integration-set-up)
 5. [VSM](#vsm-set-up)
-6. []
+6. [Good to go!](#congrats-you-are-all-set)
 
 
 
@@ -192,11 +192,20 @@ For github we have the following link rules:
 ```
 You might recall we previously set up issue templates to adhere to the pattern: "([A-Z]+-[0-9]+)"
 
-## Uplading JSON
+## Uploading JSON
 We understand setting up everything for the first time can be tideous, if you are on a rush you can upload the vsm file attached in this repo to you value stream. 
 
 Edit Value Stream Map -> Import JSON -> select file to upload.
+<p align="center">
+  <img width="700" alt="Screen Shot 2022-04-25 at 9 52 03" src="https://user-images.githubusercontent.com/49797284/165115897-d5a09455-b203-41ad-9bbe-7acc13cd37d5.png">
+</p>
+<p align="center">
+  <img width="700" alt="Screen Shot 2022-04-25 at 9 52 23" src="https://user-images.githubusercontent.com/49797284/165115865-ac9c5a83-e9b2-4c19-b62e-fb1be0588752.png">
+</p>
+<p align="center">
+ <img width="278" alt="Screen Shot 2022-04-25 at 9 52 53" src="https://user-images.githubusercontent.com/49797284/165115997-d0d76a57-db5d-4ce8-a7be-001f2f1393a3.png">
+</p>
 
-
+## CONGRATS YOU ARE ALL SET!
 
 by Daniel Barrera | HCL Accelerate
