@@ -39,6 +39,9 @@ API URL: The current API URL used by github is https://api.github.com
 
 Owner: when you copy the repository this will be your username, the repositories you want to observe, and the branches should stay as is.
 
+## Linking rules.
+Accelerate uses linking rules to connect each tool. In this scenario for github we will used them to link the issues and pull requests.
+
 ## Reports.
 
 
