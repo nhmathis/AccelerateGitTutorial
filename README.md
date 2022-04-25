@@ -3,7 +3,8 @@
 2. [What is Value Stream Management](#why-value-stream-management)
 3. [Git Hub](#github-set-up)
 4. [Integration ](#integration-set-up)
-5. [VSM JSON](#VSM JSON)
+5. [VSM](#vsm-set-up)
+6. []
 
 
 
@@ -30,7 +31,7 @@ With DevOps tools already in the market, we can levarage their information to gi
 In laymen terms, we breakdown your product into units you can easily track and understan without having to log in to each github, jira,or jenkins dashboard.
 
 
-## GitHub Set Up
+# GitHub Set Up
 
 For this tutorial you will need an active github repository and a personal token with a minimum of write priority. If you have trouble creating a personal token follow this [tutorial](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
@@ -39,7 +40,7 @@ Accelerate uses pattern matching to identify which issues are related to wich pu
 
 If you are not familiar with issue templates, you can clone this repository and uses the templates already defined under: [ISSUE_TEMPLATE](https://github.com/danielbarr3ra/AccelerateGitTutorial/tree/main/.github/ISSUE_TEMPLATE)
 
-## Integration set up.
+# Integration Set Up
 
 Integrations give Accelerate access to your development tools. They are stored under: Setting -> Plugins.
 <p align="center">
@@ -71,7 +72,7 @@ Here is a sample of what the integration set up will look like, if its different
 
 
 
-## VSM Set Up
+# VSM Set Up
 
 Creating a value stream in Accelerate is simple, in the main dashboard you can select "Create New Value Stream Management" and add the title, description and default team:
 
@@ -80,26 +81,21 @@ Creating a value stream in Accelerate is simple, in the main dashboard you can s
   <img width="700" alt="Screen Shot 2022-04-25 at 8 42 14" src="https://user-images.githubusercontent.com/49797284/165101649-a983e4c3-bb5b-4926-b328-f2f82a3f20a0.png">
 </p>
 <p align="center">
-  <img height="300" alt="Screen Shot 2022-04-25 at 8 42 33" src="https://user-images.githubusercontent.com/49797284/165101655-ffeac789-9c49-49a6-9210-d888ad6807b2.png">
-</p>
-
-
-<p align="center">
   <img width="700" alt="Screen Shot 2022-04-25 at 8 42 43" src="https://user-images.githubusercontent.com/49797284/165101730-b46011e3-d9eb-4cc7-8839-303a147a1030.png">
 </p>
 
 This will bring up the default VSM look which we will modify in the following section.
 
 
-## VSM JSON
+## JSON
 
 The vsm json file is the rule book for accelerate, in this file you assing all the different stages, linking rules, and integrations.
 When edited correctly your VSM dashboard its updated and the right taks will appear and be tracked trhoughtout your pocess.
 
 The JSON file has the following tree strucutre:
 * VSM
-  * phase
-      * stage
+  * phases
+      * stages
   * leadTime
   * cyleTime
   * mappings
@@ -109,7 +105,7 @@ The JSON file has the following tree strucutre:
   * metricsBar
 
 
-### Phases and Stages
+## Phases and Stages
 
 Each phase has the following strcutre:
 ```json
@@ -142,8 +138,20 @@ Each phase has the following strcutre:
     },
 ```
 
-## Query Rules and Linking Rules.
+## Integrations
+After setting up the integration, you can include it ont your vsm file by simply adding the follwing under integration
+
+```json
+"integrations": [
+   {
+    "name":"name used on the integration"
+   }
+  ],
+```
+
+## Queries and Linking Rules.
 As noted in the previous section, stages have a query patameter. This query pattameter uses DQL fields to search and filter the different tasks from the data provided by your integration. You can find a full list of thise quries [here](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/dots_query/#devops-query-language-dql). An example of the queies used in our vsm are the following:
+
 
 ```json
         {
@@ -170,7 +178,7 @@ As noted in the previous section, stages have a query patameter. This query patt
 ```
 Since pull requests and issues are different items, we need to find a way to link them together and track their process. Accelerate achives this with linking rules. To define a link rule, specify a field in the linked-from tool that you want to associate with a field in the linked-to tool, and a regular expression that defines the matching pattern. 
 
-For github we have the following link rules.
+For github we have the following link rules:
 ```json
 "linkRules": [
     {
@@ -183,7 +191,12 @@ For github we have the following link rules.
   ],
 ```
 You might recall we previously set up issue templates to adhere to the pattern: "([A-Z]+-[0-9]+)"
-## Reports.
+
+## Uplading JSON
+We understand setting up everything for the first time can be tideous, if you are on a rush you can upload the vsm file attached in this repo to you value stream. 
+
+Edit Value Stream Map -> Import JSON -> select file to upload.
+
 
 
 by Daniel Barrera | HCL Accelerate
