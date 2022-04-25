@@ -5,6 +5,7 @@
 4. [Integration ](#integration-set-up)
 5. [Reports](#reports)
 
+<img width="1402" alt="Screen Shot 2022-04-24 at 23 56 12" src="https://user-images.githubusercontent.com/49797284/165023336-eb80f276-d25c-42f5-a6d5-d1fea2df7aea.png">
 
 # Accelearate out of the box.
 
@@ -25,11 +26,14 @@ In laymen terms, we take breakdown your product into units you can easily track 
 
 ## GitHub set up
 
+
 For this tutorial you will need an active github repository and a personal token with a minimum of write priority. If you have trouble creating a personal token follow this [tutorial](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 Accelerate uses pattern matching to identify which issues are related to wich prs. Since different teams might have different standards, or none at all, I have suggested to use github issue templates to take care of it. In this case we will be using prefix DOC and BUG to identify what kind of issue we are dealing with.
 
 ## Integration set up.
+
+<img width="300" alt="Screen Shot 2022-04-24 at 23 58 24" src="https://user-images.githubusercontent.com/49797284/165023554-6c9c2813-daef-41b1-8c4b-16231dd0c52b.png"> <img width="300" alt="Screen Shot 2022-04-24 at 23 58 00" src="https://user-images.githubusercontent.com/49797284/165023559-de8cd373-a93d-4a88-9c3a-6c98ebbe555f.png">
 
 Once you have your api key you can go to integrations an add the following information to github.
 
