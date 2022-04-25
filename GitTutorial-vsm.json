@@ -1,0 +1,161 @@
+{
+  "description": null,
+  "query": "",
+  "phases": [
+    {
+      "name": "Planning",
+      "description": "",
+      "stages": [
+        {
+          "name": "New Issues",
+          "query": "issue.owner = \"unknown\" and issue.status = \"Open\" ",
+          "description": "Unasigned issue",
+          "targets": [
+            "Assigned"
+          ],
+          "wipLimit": 6,
+          "gates": null
+        },
+        {
+          "name": "Assigned",
+          "query": "issue.owner != \"unknown\" and issue.status = \"Open\"  ",
+          "description": "These issues have been assigned to a team member",
+          "targets": [
+            "In Progress"
+          ],
+          "wipLimit": null,
+          "gates": null
+        }
+      ]
+    },
+    {
+      "name": "Development",
+      "description": "",
+      "stages": [
+        {
+          "name": "In Progress",
+          "query": "pr.status = open and pr.assignees.count = 0",
+          "description": "",
+          "targets": [
+            "In Review"
+          ],
+          "wipLimit": 10,
+          "gates": null
+        },
+        {
+          "name": "In Review",
+          "query": "pr.status = open and pr.assignees.count != 0",
+          "description": "",
+          "targets": [
+            "Merged"
+          ],
+          "wipLimit": 5,
+          "gates": null
+        },
+        {
+          "name": "Merged",
+          "query": "pr.status=closed and issue.status != \"Closed\" ",
+          "description": "",
+          "targets": [
+            "Fixed"
+          ],
+          "wipLimit": null,
+          "gates": null
+        }
+      ]
+    },
+    {
+      "name": "Fixed Issues",
+      "description": "These Issues have been fixed.",
+      "stages": [
+        {
+          "name": "Fixed",
+          "query": "issue.status = \"Closed\" ",
+          "description": "Closed issue",
+          "targets": [],
+          "wipLimit": null,
+          "gates": null
+        }
+      ]
+    }
+  ],
+  "leadTime": {
+    "start": "New Issues",
+    "end": "Fixed"
+  },
+  "cycleTime": {
+    "start": "In Progress",
+    "end": "Fixed"
+  },
+  "mappings": {
+    "priority": {
+      "Lowest": [
+        "Lowest"
+      ],
+      "Low": [
+        "Low"
+      ],
+      "Medium": [
+        "Medium"
+      ],
+      "High": [
+        "High"
+      ],
+      "Highest": [
+        "Highest"
+      ]
+    }
+  },
+  "integrations": [
+    {
+      "ADD YOUR INTEGRATION NAME HERE, IT SHOULD MATCH THE ONE IN THE FROM AND TO INTEGRATION NAME UNDER LINK RULES"
+    }
+  ],
+  "linkRules": [
+    {
+      "fromIntegrationName": "SingleGitIntegration",
+      "toIntegrationName": "SingleGitIntegration",
+      "fromField": "pr.name",
+      "toField": "issue.name",
+      "pattern": "([A-Z]+-[0-9]+)"
+    }
+  ],
+  "metrics": null,
+  "metricsBar": [
+    {
+      "__typename": "Chartable",
+      "_id": "625d666a0a0e090018628c84",
+      "name": "Bottleneck",
+      "drillDowns": null,
+      "layout": null,
+      "overlays": [],
+      "filters": {
+        "dql": "record.executionDate < 30d"
+      }
+    },
+    {
+      "__typename": "Chartable",
+      "_id": "625d666a01070979d4c04bb1",
+      "name": "Throughput",
+      "drillDowns": null,
+      "layout": {
+        "comparisonType": "percentageChange"
+      },
+      "overlays": [
+        {
+          "_id": "625d666a01070979d4c04bae",
+          "name": "Previous Throughput",
+          "layout": {
+            "comparisonType": "percentageChange"
+          },
+          "filters": {
+            "dql": "timestamp > 30d AND timestamp < 60d AND cycleType = \"leadTime\""
+          }
+        }
+      ],
+      "filters": {
+        "dql": "timestamp < 30d AND cycleType = \"leadTime\""
+      }
+    }
+  ]
+}
