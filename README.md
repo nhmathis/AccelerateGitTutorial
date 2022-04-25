@@ -5,7 +5,12 @@
 4. [Integration ](#integration-set-up)
 5. [Reports](#reports)
 
-<img width="1402" alt="Screen Shot 2022-04-24 at 23 56 12" src="https://user-images.githubusercontent.com/49797284/165023336-eb80f276-d25c-42f5-a6d5-d1fea2df7aea.png">
+
+
+<p align="center">
+  <img width="800" alt="Screen Shot 2022-04-24 at 23 56 12" src="https://user-images.githubusercontent.com/49797284/165023336-eb80f276-d25c-42f5-a6d5-d1fea2df7aea.png">
+</p>
+
 
 # Accelearate out of the box.
 
@@ -25,7 +30,7 @@ With DevOps tools already in the market, we can levarage their information to gi
 In laymen terms, we breakdown your product into units you can easily track and understan without having to log in to each github, jira,or jenkins dashboard.
 
 
-## GitHub set up
+## GitHub Set Up
 
 For this tutorial you will need an active github repository and a personal token with a minimum of write priority. If you have trouble creating a personal token follow this [tutorial](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
@@ -37,23 +42,59 @@ If you are not familiar with issue templates, you can clone this repository and 
 ## Integration set up.
 
 Integrations give Accelerate access to your development tools. They are stored under: Setting -> Plugins.
+<p align="center">
+  <img width="700" alt="Screen Shot 2022-04-25 at 8 26 19" src="https://user-images.githubusercontent.com/49797284/165099448-fe26da9e-0151-436d-8a32-09db890d4e4f.png">
+</p>
 
-<images>
-<images>
-<images>
+<p align="center">
+  <img width="700" alt="Screen Shot 2022-04-25 at 8 27 18" src="https://user-images.githubusercontent.com/49797284/165099459-8c579cf0-bb79-4d4e-8598-c5026eee8623.png">
+</p>
+<p align="center">
+ <img width="700" alt="Screen Shot 2022-04-25 at 8 27 57" src="https://user-images.githubusercontent.com/49797284/165099470-bba07045-d608-40ff-9868-d31e866b509d.png">
+</p>
 
-Each integration will have different patt
+Each integration will have different pattetrns for github we have:
+
+* Integration Name: This integration name will be used later on the linking rules, lets keep it consistent.
+* API URL: The current API URL used by github is https://api.github.com
+* Owner: when you copy the repository this will be your username.
+* Personal access token: the token obtained during github setup.
+* repositories: you can add multiple reppositories, in this case its only one.
+* branches: you can also observe multiple branches, in this case we are only observing main.
+
+Here is a sample of what the integration set up will look like, if its different you might be on an older version of the release, you can update by clicking on the "check for upgrades button"
 
 
-<img width="300" alt="Screen Shot 2022-04-24 at 23 58 24" src="https://user-images.githubusercontent.com/49797284/165023554-6c9c2813-daef-41b1-8c4b-16231dd0c52b.png"> <img width="300" alt="Screen Shot 2022-04-24 at 23 58 00" src="https://user-images.githubusercontent.com/49797284/165023559-de8cd373-a93d-4a88-9c3a-6c98ebbe555f.png">
+<p align="center">
+  <img height="300" alt="Screen Shot 2022-04-24 at 23 58 24" src="https://user-images.githubusercontent.com/49797284/165023554-6c9c2813-daef-41b1-8c4b-16231dd0c52b.png"> <img height="300" alt="Screen Shot 2022-04-24 at 23 58 00" src="https://user-images.githubusercontent.com/49797284/165023559-de8cd373-a93d-4a88-9c3a-6c98ebbe555f.png">
+</p>
 
-Once you have your api key you can go to integrations an add the following information to github.
 
-Integration Name: This integration name will be used later on the linking rules, lets keep it consistent.
 
-API URL: The current API URL used by github is https://api.github.com
+## VSM Set Up
 
-Owner: when you copy the repository this will be your username, the repositories you want to observe, and the branches should stay as is.
+Creating a value stream in Accelerate is simple, in the main dashboard you can select "Create New Value Stream Management" and add the title, description and default team:
+
+
+<p align="center">
+  <img width="700" alt="Screen Shot 2022-04-25 at 8 42 14" src="https://user-images.githubusercontent.com/49797284/165101649-a983e4c3-bb5b-4926-b328-f2f82a3f20a0.png">
+</p>
+<p align="center">
+  <img height="300" alt="Screen Shot 2022-04-25 at 8 42 33" src="https://user-images.githubusercontent.com/49797284/165101655-ffeac789-9c49-49a6-9210-d888ad6807b2.png">
+</p>
+
+
+<p align="center">
+  <img width="700" alt="Screen Shot 2022-04-25 at 8 42 43" src="https://user-images.githubusercontent.com/49797284/165101730-b46011e3-d9eb-4cc7-8839-303a147a1030.png">
+</p>
+
+This will bring up the default VSM look which we will modify in the following section.
+
+
+## VSM JSON
+
+The vsm json file is the rule book for accelerate, in this file you assing all the different stages, linking rules, and integrations.
+The format is the following: 
 
 ## Linking rules.
 Accelerate uses linking rules to connect each tool. In this scenario for github we will used them to link the issues and pull requests. We only have one link rule in this tutorial, since we are connecting issues and pr within github.
@@ -61,9 +102,5 @@ Accelerate uses linking rules to connect each tool. In this scenario for github 
 
 ## Reports.
 
-## VSM JSON FILE
-
-The vsm json file is the rule book for accelerate, in this file you assing all the different stages, linking rules, and integrations.
-The format is the following: 
 
 by Daniel Barrera | HCL Accelerate
