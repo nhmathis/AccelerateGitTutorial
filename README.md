@@ -1,4 +1,4 @@
-# Table of Contents
+# Table of Contents Edit #1
 1. [Accelerate](#accelearate-out-of-the-box)
 2. [What is Value Stream Management](#why-value-stream-management)
 3. [Git Hub](#github-set-up)
