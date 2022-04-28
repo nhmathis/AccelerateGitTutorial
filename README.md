@@ -209,7 +209,8 @@ Edit Value Stream Map -> Import JSON -> select file to upload.
 after it has been submitted your Value Stream Map should look something like this.
 
 <p align="center">
- 
+ <img width="700" alt="Screen Shot 2022-04-28 at 10 01 40" src="https://user-images.githubusercontent.com/49797284/165783128-3783fe2c-0886-42a4-88c9-f5233a6f8726.png">
+
 </p>
 
 
