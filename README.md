@@ -15,20 +15,20 @@
 
 # Accelearate out of the box.
 
-HCL Accelerate is DevOps tool that gathers information across the release lifecycle from different sources. By mapping the movement of tasks it can provide insight on important metrics such as lead time, cycle time, and bottlenecking across your team.
+HCL Accelerate is a tool that gathers information across the release lifecycle from other DevOps tools. By mapping the movement of tasks, it can provide managers important metrics such as lead time, cycle time, and bottle-necking across their team.
 
-Accelerate suports multiple integrations: Jenkins, GitLab, GitHub, etc. This flexibility allows teams to customize their experience as they see fit. We understan that some of our clients are looking for an out of the box experience, this is why we have created this series of templates to help teams integrate accelerate the smothest and fastest way possible.
+Accelerate supports multiple integrations: Jenkins, GitLab, GitHub, etc. This flexibility allows teams to customize their experience as they see fit. We understand that some of our clients are looking for an out of the box experience, this is why we have created this series of templates to help teams integrate accelerate the smoothest and fastest way possible.
 
-In this tutorial we will focus on a github only integration.
+In this tutorial we will focus on a **github only** integration.
 
 ## Why Value Stream Management?
 
 Before we begin, lets have some motivation. Why is Value Stream Management important (VSM)? VSM is rooted in the concepts of mapping your organizational processes. This involves working with all major contributing business units (design, development, product management, release engineers, quality assurance, security, etc).
 
 
-With DevOps tools already in the market, we can levarage their information to give insights on the performance of our team, and lifecyle of our product.
+With all so many DevOps tools already in the market, we can leverage their information and help identify pain points, create greater visibility/traceability throughout the life cycle, or eliminate redundant and wasteful processes.
 
-In laymen terms, we breakdown your product into units you can easily track and understan without having to log in to each github, jira,or jenkins dashboard.
+In laymen terms, we breakdown your product into units you can easily track in a linear way without having to log in to each devops tools.
 
 
 # GitHub Set Up
@@ -36,7 +36,7 @@ In laymen terms, we breakdown your product into units you can easily track and u
 For this tutorial you will need an active github repository and a personal token with a minimum of write priority. If you have trouble creating a personal token follow this [tutorial](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 
-Accelerate uses pattern matching to identify which issues are related to wich pull request. Since different teams might have different standards, or none at all, I have suggested to use github issue templates to take care of it. In this case we will be using prefix DOC and BUG to identify what kind of issue we are dealing with.
+Accelerate uses pattern matching to identify which issues are related to which pull request. Since different teams might have different standards, or none at all, I have suggested to use github issue templates to take care of this consistency. In this case we will be using prefix DOC and BUG to identify what kind of issue we are dealing with.
 
 If you are not familiar with issue templates, you can clone this repository and uses the templates already defined under: [ISSUE_TEMPLATE](https://github.com/danielbarr3ra/AccelerateGitTutorial/tree/main/.github/ISSUE_TEMPLATE)
 
@@ -54,13 +54,13 @@ Integrations give Accelerate access to your development tools. They are stored u
  <img width="700" alt="Screen Shot 2022-04-25 at 8 27 57" src="https://user-images.githubusercontent.com/49797284/165099470-bba07045-d608-40ff-9868-d31e866b509d.png">
 </p>
 
-Each integration will have different pattetrns for github we have:
+Each integration will have different parameters for github we have:
 
 * Integration Name: This integration name will be used later on the linking rules, lets keep it consistent.
 * API URL: The current API URL used by github is https://api.github.com
 * Owner: when you copy the repository this will be your username.
 * Personal access token: the token obtained during github setup.
-* repositories: you can add multiple reppositories, in this case its only one.
+* repositories: you can add multiple repositories, in this case its only one.
 * branches: you can also observe multiple branches, in this case we are only observing main.
 
 Here is a sample of what the integration set up will look like, if its different you might be on an older version of the release, you can update by clicking on the "check for upgrades button"
@@ -89,10 +89,10 @@ This will bring up the default VSM look which we will modify in the following se
 
 ## JSON
 
-The vsm json file is the rule book for accelerate, in this file you assing all the different stages, linking rules, and integrations.
-When edited correctly your VSM dashboard its updated and the right taks will appear and be tracked trhoughtout your pocess.
+The vsm json file is the rule book for accelerate, in this file you assign all the different stages, linking rules, and integrations.
+When edited correctly your VSM dashboard its updated and the right task will appear and be tracked throughout your process.
 
-The JSON file has the following tree strucutre:
+The JSON file has the following tree structure:
 * VSM
   * phases
       * stages
@@ -107,19 +107,19 @@ The JSON file has the following tree strucutre:
 
 ## Phases and Stages
 
-Each phase has the following strcutre:
+Each phase has the following structure:
 ```json
 "phases": [
     {
       "name": "Name of the first phase",
-      "description": "What does this phase accomplish, planning, develompent?",
+      "description": "What does this phase accomplish, planning, development?",
       "stages": [
         {
           "name": "Name of the first phase on this stage",
           "query": "This query will pull information from integration",
           "description": "what are the tasks on this stage",
           "targets": [
-            "Name of the follwoing stage"
+            "Name of the following stage"
           ],
           "wipLimit": 3,   /*there is a limit of three work in progress items*/
           "gates": null
@@ -139,7 +139,7 @@ Each phase has the following strcutre:
 ```
 
 ## Integrations
-After setting up the integration, you can include it ont your vsm file by simply adding the follwing under integration
+After setting up the integration, you can include it ont your vsm file by simply adding the following under integration
 
 ```json
 "integrations": [
@@ -150,7 +150,7 @@ After setting up the integration, you can include it ont your vsm file by simply
 ```
 
 ## Queries and Linking Rules.
-As noted in the previous section, stages have a query patameter. This query pattameter uses DQL fields to search and filter the different tasks from the data provided by your integration. You can find a full list of thise quries [here](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/dots_query/#devops-query-language-dql). An example of the queies used in our vsm are the following:
+As noted in the previous section, stages have a query pattern. This query pattern uses DQL fields to search and filter the different tasks from the data provided by your integration. You can find a full list of these queries [here](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/dots_query/#devops-query-language-dql). An example of the queies used in our vsm are the following:
 
 
 ```json
@@ -168,7 +168,7 @@ As noted in the previous section, stages have a query patameter. This query patt
         {
           "name": "In Review",
           "query": "pr.status = open and pr.assignees.count != 0",
-          "description": "These pull request have been submited and are actively beeing looked at by other team memebers",
+          "description": "These pull request have been submitted and are actively being looked at by other team members",
           "targets": [
             "Merged"
           ],
@@ -176,7 +176,7 @@ As noted in the previous section, stages have a query patameter. This query patt
           "gates": null
         },
 ```
-Since pull requests and issues are different items, we need to find a way to link them together and track their process. Accelerate achives this with linking rules. To define a link rule, specify a field in the linked-from tool that you want to associate with a field in the linked-to tool, and a regular expression that defines the matching pattern. 
+Since pull requests and issues are different items, we need to find a way to link them together and track their process. Accelerate achieves this with linking rules. To define a link rule, specify a field in the linked-from tool that you want to associate with a field in the linked-to tool, and a regular expression that defines the matching pattern. 
 
 For github we have the following link rules:
 ```json
@@ -193,7 +193,7 @@ For github we have the following link rules:
 You might recall we previously set up issue templates to adhere to the pattern: "([A-Z]+-[0-9]+)"
 
 ## Uploading JSON
-We understand setting up everything for the first time can be tideous, if you are on a rush you can upload the vsm file attached in this repo to you value stream. 
+We understand setting up everything for the first time can be tedious, if you are on a rush you can upload the vsm file attached in this repo to you value stream. 
 
 Edit Value Stream Map -> Import JSON -> select file to upload.
 <p align="center">
@@ -206,6 +206,11 @@ Edit Value Stream Map -> Import JSON -> select file to upload.
  <img width="278" alt="Screen Shot 2022-04-25 at 9 52 53" src="https://user-images.githubusercontent.com/49797284/165115997-d0d76a57-db5d-4ce8-a7be-001f2f1393a3.png">
 </p>
 
-## CONGRATS YOU ARE ALL SET!
+after it has been submitted your Value Stream Map should look something like this.
 
-by Daniel Barrera | HCL Accelerate
+<p align="center">
+ 
+</p>
+
+
+Daniel Barrera | HCL Accelerate
