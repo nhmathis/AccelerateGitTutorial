@@ -30,6 +30,48 @@ With all so many DevOps tools already in the market, we can leverage their infor
 
 In laymen terms, we breakdown your product into units you can easily track in a linear way without having to log in to each devops tools.
 
+# Installing Accelerate
+
+## Prerequisites
+
+## Docker
+If you have not installed Docker into your machine you can follow this [docker installation guide](https://docs.docker.com/get-docker/). For the resource allocation we recommend:
+* CPUs: 4
+* Memory: 9 GB
+* Swap: 4 GB
+* Disk image size: > 100 GB
+
+## Access key
+Head to the HCL Accelerate [web portal]() to obtain your key.
+
+## Installation file. 
+
+Choose the appropriate installation depending on your OS.
+* Linux: https://hcl-velocity-binaries.s3.amazonaws.com/accelerate-hcl-install-latest-linux
+* Windows: https://hcl-velocity-binaries.s3.amazonaws.com/accelerate-hcl-install-latest-win.exe
+* Mac OS: https://hcl-velocity-binaries.s3.amazonaws.com/accelerate-hcl-install-latest-macos
+
+For linux and mac users rememeber to give the appropriate permissions before running the file.
+If your default folder for downloads is Downloads you can follow the next commands.
+```shell
+cd
+cd Downloads
+chmod +x accelerate-hcl-install-{latest-version-number}
+./accelerate-hcl-install-{latest-version-number};
+```
+
+This should lead you to the installation process were you will be asked to provide you access key.
+
+After the installation is complete you will see the Accelerate application in the default folder you provided in the installation prompt.
+From here hop on to the terminal once more and use docker compose to finish the set up.
+
+```shell
+cd path_where_you_installed_accelerate
+ls //you should see a docker-compose.yml file
+docker-compose up -d
+```
+
+From here you can access the Accelerate UI trhough the https://hostname:port where hsotanme and port are the values you set during the installation prompt.
 
 # GitHub Set Up
 
@@ -213,5 +255,12 @@ after it has been submitted your Value Stream Map should look something like thi
 
 </p>
 
+# What to do next?
+
+## Immplement another integration
+Now that you have set up github a great idea will be to implement Jira into the planning stage of your pipeline, this way you can pull stories and link them to their repective pull request. The integration set up is similar. The only change will be in the linkrule, sine now the from.Integration will be Jira instead of githu. 
+
+## Implement different streams
+You 
 
 Daniel Barrera | HCL Accelerate
