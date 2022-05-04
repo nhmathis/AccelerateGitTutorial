@@ -1,10 +1,11 @@
 # Table of Contents
 1. [Accelerate](#accelearate-out-of-the-box)
 2. [What is Value Stream Management](#why-value-stream-management)
-3. [Git Hub](#github-set-up)
-4. [Integration ](#integration-set-up)
-5. [VSM](#vsm-set-up)
-6. [Good to go!](#congrats-you-are-all-set)
+3. [instalation](#installing-accelerate)
+4. [Git Hub](#github-set-up)
+5. [Integration ](#integration-set-up)
+6. [VSM](#vsm-set-up)
+7. [Good to go!](#congrats-you-are-all-set)
 
 
 
@@ -32,8 +33,6 @@ In laymen terms, we breakdown your product into units you can easily track in a 
 
 # Installing Accelerate
 
-## Prerequisites
-
 ## Docker
 If you have not installed Docker into your machine you can follow this [docker installation guide](https://docs.docker.com/get-docker/). For the resource allocation we recommend:
 * CPUs: 4
@@ -44,7 +43,7 @@ If you have not installed Docker into your machine you can follow this [docker i
 ## Access key
 Head to the HCL Accelerate [web portal]() to obtain your key.
 
-## Installation file. 
+## Installation file 
 
 Choose the appropriate installation depending on your OS.
 * Linux: https://hcl-velocity-binaries.s3.amazonaws.com/accelerate-hcl-install-latest-linux
@@ -257,10 +256,8 @@ after it has been submitted your Value Stream Map should look something like thi
 
 # What to do next?
 
-## Immplement another integration
-Now that you have set up github a great idea will be to implement Jira into the planning stage of your pipeline, this way you can pull stories and link them to their repective pull request. The integration set up is similar. The only change will be in the linkrule, sine now the from.Integration will be Jira instead of githu. 
+## Immplementing another integration
+Now that you have set up github a great idea will be to implement Jira into the planning stage of your valuestream. You can pull stories and link them to their repective pull request. The integration set up is similar. The only change will be in the linkrule, sine now the "from.Integration" will be Jira instead of githu. 
 
-## Implement different streams
-You 
 
 Daniel Barrera | HCL Accelerate
