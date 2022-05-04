@@ -1,11 +1,11 @@
 # Table of Contents
 1. [Accelerate](#accelearate-out-of-the-box)
 2. [What is Value Stream Management](#why-value-stream-management)
-3. [instalation](#installing-accelerate)
-4. [Git Hub](#github-set-up)
+3. [Instalation](#installing-accelerate)
+4. [Git Hub Set Up](#github-set-up)
 5. [Integration ](#integration-set-up)
 6. [VSM](#vsm-set-up)
-7. [Good to go!](#congrats-you-are-all-set)
+7. [Future Improvements](#what-to-do-next)
 
 
 
@@ -41,7 +41,7 @@ If you have not installed Docker into your machine you can follow this [docker i
 * Disk image size: > 100 GB
 
 ## Access key
-Head to the HCL Accelerate [web portal]() to obtain your key.
+Head to the HCL Accelerate [web portal](https://pages.services/hcltechsw.com/accelerate-download/) to obtain your key.
 
 ## Installation file 
 
@@ -257,7 +257,47 @@ after it has been submitted your Value Stream Map should look something like thi
 # What to do next?
 
 ## Immplementing another integration
-Now that you have set up github a great idea will be to implement Jira into the planning stage of your valuestream. You can pull stories and link them to their repective pull request. The integration set up is similar. The only change will be in the linkrule, sine now the "from.Integration" will be Jira instead of githu. 
+Now that you have set up github a great idea will be to implement Jira into the planning stage of your valuestream. You can pull stories and link them to their repective pull request. The integration set up is similar. The only change will be in the linkrule, sine now the "from.Integration" will be Jira instead of github.
+
+
+Add the new integration:
+```json
+"integrations": [
+   {
+    "name":"SingleGitIntegration"
+   },
+   {
+   "name": "JiraIntegration"
+   }
+  ],
+```
+
+The queries are similar
+```json
+        {
+          "name": "Assigned",
+          "query": "issue.owner != \"unknown\" and issue.status = \"Open\"  ",
+          "description": "These issues have been assigned to a team member",
+          "targets": [
+            "In Progress"
+          ],
+          "wipLimit": null,
+          "gates": null
+       }
+```
+
+The linkRule needs to specify a different fromIntegration value.
+```json
+"linkRules": [
+    {
+      "fromIntegrationName": "JiraIntegration",
+      "toIntegrationName": "SingleGitIntegration",
+      "toField": "pr.name",
+      "fromField": "issue.name",
+      "pattern": "([A-Z]+-[0-9]+)"
+    }
+  ],
+```
 
 
 Daniel Barrera | HCL Accelerate
