@@ -33,6 +33,7 @@ In laymen terms, we breakdown your product's silos and construct a single-pane-o
 
 Full directions can be found on our [installation documentation](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/c_install_se_roadmap/). We recommend the Docker Compose installation path for PoCs and this tutorial. The shorthand directions are below.
 
+
 ## Docker Desktop
 If you have not installed Docker into your machine, you can follow this [Docker Desktop installation guide](https://docs.docker.com/desktop/). 
 
@@ -79,6 +80,7 @@ From here, you can access the HCL Accelerate UI through the https://hostname:por
 For this tutorial you will need to clone [this GitHub repository](https://github.com/danielbarr3ra/AccelerateGitTutorial) and a personal token with a minimum of `repo` priorities. If you have trouble creating a personal token follow this [tutorial](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 HCL Accelerate uses pattern matching to identify which issues are related to which pull request. Since different teams might have different standards, or none at all, I have suggested to use GitHub issue templates to take care of it. In this case we will be using prefix DOC and BUG to identify what kind of issue we are dealing with.
+
 
 If you are not familiar with issue templates, you can clone this repository and uses the templates already defined under: [ISSUE_TEMPLATE](https://github.com/danielbarr3ra/AccelerateGitTutorial/tree/main/.github/ISSUE_TEMPLATE)
 
@@ -182,7 +184,9 @@ Each phase has the following structure:
 ```
 
 ## Integrations
+
 After setting up the integration, you can include it on your vsm file by simply adding the following under integration:
+
 
 ```json
 "integrations": [
@@ -193,8 +197,8 @@ After setting up the integration, you can include it on your vsm file by simply 
 ```
 
 ## Queries and Linking Rules.
-As noted in the previous section, stages have a query parameter. This query parameter uses DQL fields to search and filter the different tasks from the data provided by your integration. You can find a full list of these queries [here](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/dots_query/#devops-query-language-dql). An example of the queries used in our vsm json are the following:
 
+As noted in the previous section, stages have a query parameter. This query parameter uses DQL fields to search and filter the different tasks from the data provided by your integration. You can find a full list of these queries [here](https://devops.hcldoc.com/accelerate/3.0.x/#com.uvelocity.doc/topics/dots_query/#devops-query-language-dql). An example of the queries used in our vsm json are the following:
 
 
 ```json
@@ -220,6 +224,7 @@ As noted in the previous section, stages have a query parameter. This query para
           "gates": null
         },
 ```
+
 Since pull requests and issues are different items, we need to find a way to link them together and track their process. HCL Accelerate achieves this with link rules. To define a link rule, specify two integrations, the two fields that will be monitored, and a regular expression that monitored for.
 
 For GitHub, we have the following link rule:
@@ -238,6 +243,7 @@ In this scenario, the link rule will look at the data that the `SingleGitIntegra
 
 ## Uploading JSON
 We understand setting up everything for the first time can be tideous. If you are on a rush you can upload the [vsm file in this repository](https://github.com/nhmathis/AccelerateGitTutorial/blob/main/GitTutorial-vsm.json) to you value stream. 
+
 
 Edit Value Stream Map -> Import JSON -> select file to upload.
 <p align="center">
@@ -261,6 +267,7 @@ A successful value stream should look something like this!
 
 ## Implement another integration
 Now that you have set up GitHub, a great idea will be to implement Jira into the planning stage of your value stream. You can pull stories and link them to their repective pull request. The integration set up is similar. The only change will be in the link rule, since now the "from.Integration" will be Jira instead of github.
+
 
 
 Add the new integration:
@@ -290,6 +297,7 @@ The queries are similar
 ```
 
 The link rule needs to specify a different fromIntegration value.
+
 ```json
 "linkRules": [
     {
